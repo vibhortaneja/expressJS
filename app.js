@@ -1,22 +1,19 @@
-var express = require('express');
-var bodyParser = require('body-parser'); /*To perform different HTTP request*/
-var mongoose = require('mongoose'); /*MingoDb data base*/
+let express = require('express');
+let bodyParser = require('body-parser'); /*To perform different HTTP request*/
+let mongoose = require('mongoose'); /*MingoDb data base*/
 
-var api = require('./routes/api')
+let api = require('./routes/api')
+let new1 = require('./routes/new')
+let new2 = require('./routes/new')
 
-var app = express();
+let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api", api);
+app.use("/opp",new1);
 
-
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
 app.listen(3000);
 
 module.exports = app;

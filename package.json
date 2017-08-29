@@ -4,14 +4,18 @@
   "description": "Simple bookstore app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha || true"
   },
-  "dependencies":{
-  	"express":"*",
-  	"body-parser":"*",  
-  	"mongoose": "*"
-
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*"
   },
   "author": "Vibhor Taneja",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "supertest": "^3.0.0"
+  }
 }
