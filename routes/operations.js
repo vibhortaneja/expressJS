@@ -8,11 +8,12 @@ router.use(bodyParser.urlencoded({
 }))*/
 
 router.post('/multiply/:id1/:id2', (req, res) => {
+
     let a =parseFloat(req.params.id1)
     let b = parseFloat(req.params.id2)
     let mul = a*b;
     res.send(mul.toString());
-    console.log(mul)
+    
 })
 
 router.post('/add/:id3/:id4', (req, res) => {

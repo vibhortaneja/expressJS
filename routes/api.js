@@ -15,8 +15,7 @@ router.use(bodyParser.urlencoded({
 }))
 
 router.get('/', (req, res) => {
-    Data.find({})
-        .exec((err, books) => {
+    Data.find((err, books) => {
             res.json(books);
         });
 });

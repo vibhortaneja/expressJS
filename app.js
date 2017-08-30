@@ -3,8 +3,7 @@ let bodyParser = require('body-parser'); /*To perform different HTTP request*/
 let mongoose = require('mongoose'); /*MingoDb data base*/
 
 let api = require('./routes/api')
-let new1 = require('./routes/new')
-let new2 = require('./routes/new')
+let operation = require('./routes/operations')
 
 let app = express();
 
@@ -12,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api", api);
-app.use("/opp",new1);
+app.use("/opp",operation);
 
 app.listen(3000);
 
