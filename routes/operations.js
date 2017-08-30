@@ -24,5 +24,22 @@ router.post('/add/:id3/:id4', (req, res) => {
     
 })
 
+router.post('/subtract/:id5/:id6', (req, res) => {
+    let a =parseFloat(req.params.id5)
+    let b = parseFloat(req.params.id6)
+    let sub = a-b;
+    res.send(sub.toString());
+    
+})
+
+router.post('/divide/:id7/:id8', (req, res) => {
+    let a =parseFloat(req.params.id7)
+    let b = parseFloat(req.params.id8)
+    let div = a/b;
+    res.send(div.toString());
+    
+})
+
+
 
 module.exports=router;

@@ -16,31 +16,50 @@ router.use(bodyParser.urlencoded({
 
 router.get('/', (req, res) => {
     Data.find((err, books) => {
-            res.json(books);
-        });
+        res.json(books);
+    });
 });
 
 router.post('/', (req, res) => {
-    Data.create(req.body).then((data) => {
-        res.send(data);
-    });
+    var databook = new Data();
+    databook.title = req.body.title
+    databook.author = req.body.author
+    databook.genre = req.body.genre
 
-});
+    databook.save((err, book) => {
+        if (err) {
+            res.send('fail to add');
+        } else {
+            res.json(book)
+        }
+    })
+})
 
 router.put('/update/:id', (req, res) => {
-    Data.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
-        Data.findOne({ _id: req.params.id }).then((data) => {
-            res.send(data);
-        }); // here then keyword is part of promise function 
-    });
-});
+    Data.update({
+        _id: req.params.id
 
+    }, { $set: { title: req.body.title } },  (err, newBook) => {
+        if (err)
+            res.send("error in updating")
+        else {
+            res.send(newBook)
+        }
+    })
+})
 
 router.delete('/delete/:id', (req, res) => {
-    Data.findByIdAndRemove({ _id: req.params.id }).then((data) => {
-        res.send(data);
-    });
+    Data.remove({
+        _id: req.params.id
+    }, (err, book) => {
+        if (err) res.send('error deleting')
+        else {
+            res.json(book)
+        }
+    })
+})
 
-});
+
+
 
 module.exports = router;

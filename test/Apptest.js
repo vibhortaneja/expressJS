@@ -22,9 +22,35 @@ describe("Testing the multiply route", function(err) {
     })
 })
 
-it("should multiply the value", function(done) {
+it("should add the value", function(done) {
     url
         .post("/opp/add/5/6")
+        .end(function(err, res) {
+            if (err) {
+                throw err
+            }
+
+            assert.equal(res.text, 11)
+            done()
+        })
+})
+
+it("should subtract the value", function(done) {
+    url
+        .post("/opp/subtract/17/6")
+        .end(function(err, res) {
+            if (err) {
+                throw err
+            }
+
+            assert.equal(res.text, 11)
+            done()
+        })
+})
+
+it("should divide the value", function(done) {
+    url
+        .post("/opp/divide/55/5")
         .end(function(err, res) {
             if (err) {
                 throw err
